@@ -1,0 +1,101 @@
+ gcc -g p2final.c
+ ./a.out
+Enter a number
+7
+Enter a number
+4
+Enter a number
+8
+c is largest among 7,4 and 8
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x886: file p2final.c, line 31.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice-1/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p2final.c:31
+31    a = input();
+(gdb) n
+Enter a number
+7
+32    b = input();
+(gdb) s
+input () at p2final.c:3
+3   {
+(gdb) n
+5     printf("Enter a number\n");
+(gdb) n
+Enter a number
+6     scanf("%d",&a);
+(gdb) n
+4
+7     return a;
+(gdb) n
+8   }
+(gdb) n
+main () at p2final.c:33
+33    c = input();
+(gdb) s
+input () at p2final.c:3
+3   {
+(gdb) n
+5     printf("Enter a number\n");
+(gdb) n
+Enter a number
+6     scanf("%d",&a);
+(gdb) n
+8
+7     return a;
+(gdb) n
+8   }
+(gdb) n
+main () at p2final.c:34
+34    largest =cmp(a,b,c,largest);
+(gdb) s
+cmp (a=7, b=4, c=8, largest=0) at p2final.c:11
+11    if (a>b && a>c)
+(gdb) n
+13    else if (b>a && b>c)
+(gdb) n
+16    return 3;
+(gdb) n
+17  }
+(gdb) n
+main () at p2final.c:35
+35    output(a,b,c,largest);
+(gdb) s
+output (a=7, b=4, c=8, largest=3) at p2final.c:20
+20    if(largest == 1)
+(gdb) n
+22    else if(largest == 2)
+(gdb) n
+25    printf("c is largest among %d,%d and %d\n",a,b,c);
+(gdb) n
+c is largest among 7,4 and 8
+27  }
+(gdb) n
+main () at p2final.c:36
+36    return 0;
+(gdb) s
+37  }(gdb) s
+__libc_start_main (main=0x5587a400087e <main>, argc=1, argv=0x7ffd07991fc8, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7ffd07991fb8) at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
+(gdb) 
